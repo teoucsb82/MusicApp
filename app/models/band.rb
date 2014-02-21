@@ -13,4 +13,5 @@ class Band < ActiveRecord::Base
 	validates :name,	:presence => true
 
 	has_many	:albums, :dependent => :destroy, :order => 'year'
+	has_many	:tracks, :through => :albums, :source => :tracks
 end
