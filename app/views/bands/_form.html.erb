@@ -3,12 +3,8 @@
 <% button_text = action == :new ? "Create Band" : "Update Band" %>
 
 
-<% if @band.persisted? %>
   <form action="<%= action_url %>" method="post">
-    <input type ="hidden" name="_method" value="<%= form_method %>">
-<% else %>
-  <form action="<%= bands_url %>" method="post">
-<% end %>
+  <input type ="hidden" name="_method" value="<%= form_method %>">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<label for="band_name">Band Name</label>
 	<input type="text" name="band[name]" id="band_name" value="<%= @band.name %>"><br>
@@ -21,3 +17,5 @@
 	<input type="submit" value="<%= button_text %>">
 
 </form>
+
+<%= render 'shared/back' %>

@@ -1,3 +1,5 @@
-<ul>
-	<li><%= link_to band.name.capitalize, band_url(band) %></li>
-</ul>
+<tr>
+	<td><%= link_to band.name, band_url(band) %></td>
+	<td><%= link_to "Edit", edit_band_url(band) %></td>
+	<td><%= link_to "Destroy", band_url(band), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

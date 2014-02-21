@@ -2,13 +2,22 @@ class BandsController < ApplicationController
 
 	def create
 		@band = Band.new(band_params)
-		#@band.user_id = current_user.id
+		@band.name = @band.name.split(" ").map(&:capitalize).join(" ")
 		if @band.save
 			redirect_to band_url(@band)
 		else
 			flash.now[:error] = @band.errors.full_messages
 			render :new
 		end
+	end
+
+	def destroy
+		get_band
+		if @band
+			@band.destroy
+			flash.now[:error] = @band.errors.full_messages
+		end
+		redirect_to bands_url
 	end
 
 	def edit
@@ -27,7 +36,7 @@ class BandsController < ApplicationController
 	end
 
 	def show
-		@band = Band.find(params[:id])
+		get_band
 		render :show
 	end
 

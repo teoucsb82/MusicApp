@@ -1,0 +1,5 @@
+<tr>
+	<td><%= link_to album.title.capitalize, album_url(album) %></td>
+	<td><%= album.year %></td>
+	<td><%= album.studio_album? ? "Studio" : "Live" %></td>
+</tr>

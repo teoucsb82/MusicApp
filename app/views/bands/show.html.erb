@@ -1,4 +1,39 @@
-<h1><%= @band.name %></h1>
-<p><%= band_image(@band, :medium) %></p>
+<% provide(:title, @band.name) %>
 
-<%= link_to "Edit Band", edit_band_url(@band) %>
+<div class="row">
+	<div class="span3">
+		<center>
+			<h2><%= @band.name %></h2>
+			<p><%= band_image(@band, :medium) %></p>
+		</center>
+	</div>
+
+	<div class="span6 offset1">
+		<h3>Albums</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="50%">Title</th>
+					<th width="20%">Year</th>
+					<th width="30%">Recording Location</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			  <% @band.albums.each do |album| %>
+			  	<tr>
+			    	<td><%= link_to album.title, album_url(album) %></td>
+			    	<td><%= album.year %></td>
+			    	<td><%= album.studio_album? ? "Studio" : "Live" %></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<hr>
+<p><%= link_to "Add album", new_band_album_url(@band) %></p>
+
+<%= link_to "Edit Band", edit_band_url(@band) %><br>
+<%= render 'shared/back' %>

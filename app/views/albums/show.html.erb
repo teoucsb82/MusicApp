@@ -1,0 +1,3 @@
+<h1><%= link_to "#{Band.find(@album.band_id).name}", band_url("#{@album.band_id}") %> - <%= @album.title %></h1>
+<hr>
+<p><%= album_image(@album, :medium) %></p>
