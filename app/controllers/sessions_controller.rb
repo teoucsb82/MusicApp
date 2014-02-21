@@ -14,15 +14,17 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user])
     if @user
       login!(@user)
+      flash[:success] = "Logged in successfully"
       redirect_to root_url
     else
-      flash.now[:error] = ["Incorrect username and/or password"]
+      flash.now[:error] = "Incorrect username and/or password"
       render :new
     end
   end
 
   def destroy
     logout!
+    flash[:alert] = "Logged Out"
     redirect_to new_session_url
   end
 end

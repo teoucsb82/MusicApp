@@ -44,6 +44,7 @@ group :development do
 	gem 'sqlite3'
 	gem 'letter_opener'
 	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 # Use ActiveModel has_secure_password

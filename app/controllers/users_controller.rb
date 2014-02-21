@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			login!(@user)
-			flash[:success] = ["Account successfully created!"]
+			flash[:success] = "Account successfully created!"
 			redirect_to "/"
 		else
 			flash.now[:error] = @user.errors.full_messages
