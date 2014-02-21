@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MusicApp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+	<head>
+	  <title>SuperAwesomeRockBand<%= " | #{yield(:title)}" unless yield(:title) == "" %></title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
 
-</body>
+	<body>
+		<div class="container">
+			<%= render 'layouts/header' %>
+			<%= render 'layouts/flash' %>
+			<%= yield %>
+		</div>
+	</body>
+
 </html>
