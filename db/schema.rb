@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221082634) do
+ActiveRecord::Schema.define(version: 20140221172933) do
 
   create_table "bands", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
   add_index "bands", ["name"], name: "index_bands_on_name", unique: true

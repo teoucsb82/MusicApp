@@ -1,6 +1,6 @@
 MusicApp::Application.routes.draw do
   
-  root to: 'bands#index'
+  root to: 'static_pages#index'
   resources	:bands
   resources :users, :only => [:new, :create]
   resource :session, :only => [:new, :create, :destroy]

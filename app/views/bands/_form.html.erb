@@ -1,0 +1,23 @@
+<% action_url = action == :new ? bands_url : band_url(@band) %>
+<% form_method = action == :new ? "POST" : "PATCH" %>
+<% button_text = action == :new ? "Create Band" : "Update Band" %>
+
+
+<% if @band.persisted? %>
+  <form action="<%= action_url %>" method="post">
+    <input type ="hidden" name="_method" value="<%= form_method %>">
+<% else %>
+  <form action="<%= bands_url %>" method="post">
+<% end %>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for="band_name">Band Name</label>
+	<input type="text" name="band[name]" id="band_name" value="<%= @band.name %>"><br>
+
+
+	<label for="band_image">Band Image URL</label>
+	<input type="text" name="band[image_url]" id="band_image" value="<%= @band.image_url %>" 
+				 placeholder="example.com/image.jpg"><br>
+
+	<input type="submit" value="<%= button_text %>">
+
+</form>
