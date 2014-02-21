@@ -11,34 +11,40 @@
 
 	<div class="span7 offset1">
 		<h3>Tracks</h3>
-		<%= link_to "Add track", "#" %>
 		<table class="table">
 			<thead>
 				<tr>
-					<th width="40%">Title</th>
-					<th width="20%">Duration</th>
-					<th width="30%"></th>
+					<th width="5%">#</th>
+					<th width="65%">Title</th>
+					<th width="20%">Bonus Track?</th>
 					<th width="5%"></th>
 					<th width="5%"></th>
 				</tr>
 			</thead>
 
 			<tbody>
-			  <%# @album.tracks.each do |track| %>
+			  <% @album.tracks.each do |track| %>
 			  	<tr>
-			    	<td><%#= link_to track.title, track_url(track) %></td>
-			    	<td><%#= album.year %></td>
-			    	<td><%#= album.studio_album? ? "Studio" : "Live" %></td>
-			    	<td><%#= link_to 'Edit', edit_album_path(album) %></td>
-			    	<td><%#= link_to 'Delete', album_path(album), :method => :delete, 
-			    					:data => { confirm: "Really delete #{album.title}?" }, class: "btn btn-danger btn-mini" %></td>
+			  		<td><%= track.track_number %></td>
+			    	<td><%= link_to track.title, track_url(track) %></td>
+			    	<td><%= track.bonus_track == true ? "Bonus" : "" %></td>
+			    	<td><%= link_to 'Edit', edit_track_path(track) %></td>
+			    	<td><%= link_to 'Delete', track_path(track), :method => :delete, 
+			    					:data => { confirm: "Really delete #{track.title}?" }, class: "btn btn-danger btn-mini" %></td>
 			    </tr>
-			  <%# end %>
+			  <% end %>
 			</tbody>
 		</table>
+		<%= link_to "+ Add Track", new_album_track_url(@album), class: "btn btn-success" %>
 	</div>
 </div>
 
 <hr>
 
-<%= link_to "<< Back", band_url(@band) %>
+<div class="row">
+	<div class="span3">
+		<center>
+			<%= link_to "<< #{@album.band.name}", band_url(@band) %>
+		</center>
+	</div>
+</div>

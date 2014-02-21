@@ -1,0 +1,33 @@
+<% action_url = action == :new ? album_tracks_url(@track.album_id) : track_url(@track) %>
+<% form_method = action == :new ? "POST" : "PATCH" %>
+<% button_text = action == :new ? "Create Track" : "Update Track" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type ="hidden" name="_method" value="<%= form_method %>">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="album_id">Album: </label>
+   <select name="track[album_id]" id="album_id">
+     <option></option>
+     <% Album.all.each do |album| %>
+       <option value="<%= album.id %>" <%= "selected" if @track.album_id == album.id %>><%= album.title %></option>
+     <% end %>
+   </select>
+
+	<label for="track_number">Track Number: </label>
+	<input type="integer" name="track[track_number]" id="track_number" value="<%= @track.track_number %>"><br>
+
+	<label for="track_title">Track Name: </label>
+	<input type="text" name="track[title]" id="track_title" value="<%= @track.title %>"><br>
+
+	<label for="track_lyrics">Lyrics: </label>
+	<textarea name="track[lyrics]" id="track_lyrics"><%= @track.lyrics %></textarea>
+
+	<label for="track_bonus">Bonus Track? </label>
+	<input type="checkbox" name="track[bonus_track]" id="track_bonus" value="true" <%= "checked" if @track.bonus_track %> > <br>
+
+	<input type="submit" value="<%= button_text %>">
+
+</form>
+
+<%= link_to "<< Back", album_url(@track.album) %>

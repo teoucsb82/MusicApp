@@ -1,0 +1,31 @@
+<% provide(:title, @album.title) %>
+
+<div class="row">
+	<div class="span3">
+		<center>
+			<h2><%= link_to "#{@track.album.title}", album_url(@track.album) %></h2>
+			<h6><%= link_to @album.band.name, band_url(@album.band) %></h6>
+			<p><%= link_to (album_image(@album, :medium)), album_url(@album) %></p>
+		</center>
+	</div>
+
+	<div class="span7 offset1">
+		<h3><%= @track.title %></h3>
+		<hr>
+		<p>
+			<em>
+				<%= h(@track.lyrics).gsub(/\n/, '<br/>').html_safe %>
+			</em>
+		</p>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<div class="span3">
+		<center>
+			<%= link_to "<< #{@track.album.title}", album_url(@track.album) %>
+		</center>
+	</div>
+</div>

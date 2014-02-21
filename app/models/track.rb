@@ -15,7 +15,7 @@
 class Track < ActiveRecord::Base
 	validates :title,					:presence => true
 	validates :album_id,			:presence => true, numericality: { only_integer: true }
-	validates :track_number,	:presence => true, numericality: { only_integer: true }
+	validates :track_number, 	:presence => true, numericality: { only_integer: true }
 
 	belongs_to	:album,
 							:class_name => "Album",
