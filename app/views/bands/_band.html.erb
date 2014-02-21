@@ -1,4 +1,5 @@
 <tr>
+	<td><%= band_image(band, :small) %></td>
 	<td><%= link_to band.name, band_url(band) %></td>
 	<td><%= link_to "Edit", edit_band_url(band) %></td>
 	<td><%= link_to "Destroy", band_url(band), :method => :delete, 
