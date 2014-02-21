@@ -26,7 +26,7 @@ class BandsController < ApplicationController
 	end
 
 	def index
-		@bands = Band.all
+		@bands = Band.all.order("name")
 		render :index
 	end
 

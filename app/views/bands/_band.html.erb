@@ -1,5 +1,6 @@
 <tr>
 	<td><%= link_to band.name, band_url(band) %></td>
 	<td><%= link_to "Edit", edit_band_url(band) %></td>
-	<td><%= link_to "Destroy", band_url(band), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= link_to "Destroy", band_url(band), :method => :delete, 
+					:data => { confirm: "Really delete #{band.name}?" }, class: "btn btn-danger btn-mini" %></td>
 </tr>

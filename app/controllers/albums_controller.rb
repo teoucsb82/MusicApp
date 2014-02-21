@@ -22,10 +22,10 @@ class AlbumsController < ApplicationController
 		render :edit
 	end
 
-	def index
-		@albums = Album.all
-		render :index
-	end
+	# def index
+	# 	@albums = Album.all
+	# 	render :index
+	# end
 
 	def new
 		@album = Album.new(:band_id => params[:band_id])
