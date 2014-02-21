@@ -1,3 +1,45 @@
-<h1><%= link_to "#{Band.find(@album.band_id).name}", band_url("#{@album.band_id}") %> - <%= @album.title %></h1>
+<% provide(:title, @album.title) %>
+
+<div class="row">
+	<div class="span3">
+		<center>
+			<h2><%= @album.title %></h2>
+			<h6><%= link_to @album.band.name, band_url(@band) %></h6>
+			<p><%= album_image(@album, :medium) %></p>
+		</center>
+	</div>
+
+	<div class="span7 offset1">
+		<h3>Tracks</h3>
+		<%= link_to "Add track", "#" %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="40%">Title</th>
+					<th width="20%">Duration</th>
+					<th width="30%"></th>
+					<th width="5%"></th>
+					<th width="5%"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+			  <%# @album.tracks.each do |track| %>
+			  	<tr>
+			    	<td><%#= link_to track.title, track_url(track) %></td>
+			    	<td><%#= album.year %></td>
+			    	<td><%#= album.studio_album? ? "Studio" : "Live" %></td>
+			    	<td><%#= link_to 'Edit', edit_album_path(album) %></td>
+			    	<td><%#= link_to 'Delete', album_path(album), :method => :delete, 
+			    					:data => { confirm: "Really delete #{album.title}?" }, class: "btn btn-danger btn-mini" %></td>
+			    </tr>
+			  <%# end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <hr>
-<p><%= album_image(@album, :medium) %></p>
+
+<%= link_to "Edit Album", edit_album_url(@album) %><br>
+<%= render 'shared/back' %>

@@ -1,4 +1,4 @@
-<% action_url = band_albums_url(@album.band_id) %>
+<% action_url = action == :new ? band_albums_url(@album.band_id) : album_url(@album) %>
 <% form_method = action == :new ? "POST" : "PATCH" %>
 <% button_text = action == :new ? "Create Album" : "Update Album" %>
 

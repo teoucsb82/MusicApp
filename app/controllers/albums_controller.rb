@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
 	def destroy
 		@band = current_band
 		@album.destroy
-		redirect_to band_albums_url(@band)
+		redirect_to band_url(@band)
 	end
 
 	def edit
@@ -33,6 +33,7 @@ class AlbumsController < ApplicationController
 	end
 
 	def show
+		@band = current_band
 		get_album
 		render :show
 	end
