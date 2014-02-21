@@ -12,6 +12,7 @@
 
 class User < ActiveRecord::Base
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  before_validation :ensure_session_token
 
 	attr_reader	:password
 
@@ -20,8 +21,11 @@ class User < ActiveRecord::Base
   validates :password_digest, :presence => true
   validates :session_token, :presence => true, :uniqueness => true
 
-  before_validation :ensure_session_token
-
+  has_many	:notes,
+  					:class_name => "Note",
+  					:foreign_key => :user_id,
+  					:primary_key => :id
+  					
 	def self.find_by_credentials(params)
 		user = User.find_by_email(params[:email])
 		return user if user && user.is_password?(params[:password])
