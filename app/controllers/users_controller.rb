@@ -7,10 +7,10 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-
 		if @user.save
-			login!(@user)
-			flash[:success] = "Account successfully created!"
+			UserMailer.welcome_email(@user).deliver!
+			# login!(@user)
+			flash[:success] = "Thanks for signing up, please click the link in your email to validate your account!"
 			redirect_to "/"
 		else
 			flash.now[:error] = @user.errors.full_messages

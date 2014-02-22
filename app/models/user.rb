@@ -8,6 +8,8 @@
 #  session_token   :string(255)      not null
 #  created_at      :datetime
 #  updated_at      :datetime
+#  admin           :boolean
+#  activated       :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

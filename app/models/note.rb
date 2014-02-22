@@ -3,9 +3,11 @@
 # Table name: notes
 #
 #  id          :integer          not null, primary key
-#  description :text
+#  description :text             not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  user_id     :integer
+#  track_id    :integer
 #
 
 class Note < ActiveRecord::Base

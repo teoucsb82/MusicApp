@@ -7,6 +7,7 @@ gem 'annotate'
 # Use sqlite3 as the database for Active Record
 gem 'bootstrap-sass', '~> 2.3.2.1'
 
+
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 group :production do
@@ -45,6 +46,7 @@ group :development do
 	gem 'letter_opener'
 	gem 'better_errors'
 	gem 'binding_of_caller'
+	gem 'letter_opener'
 end
 
 # Use ActiveModel has_secure_password

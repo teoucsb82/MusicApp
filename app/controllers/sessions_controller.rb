@@ -12,10 +12,13 @@ class SessionsController < ApplicationController
 
   def create    #this creates the session
     @user = User.find_by_credentials(params[:user])
-    if @user
+    if @user && @user.activated?
       login!(@user)
       flash[:success] = "Logged in successfully"
       redirect_to root_url
+    elsif @user && @user.activated == false
+      flash.now[:error] = "Please activate your account first!"
+      render :new
     else
       flash.now[:error] = "Incorrect username and/or password"
       render :new
