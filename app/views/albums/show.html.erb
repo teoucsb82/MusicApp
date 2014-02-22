@@ -28,9 +28,14 @@
 			  		<td><%= track.track_number %></td>
 			    	<td><%= link_to track.title, track_url(track) %></td>
 			    	<td><%= track.bonus_track == true ? "Bonus" : "" %></td>
-			    	<td><%= link_to 'Edit', edit_track_path(track) %></td>
-			    	<td><%= link_to 'Delete', track_path(track), :method => :delete, 
-			    					:data => { confirm: "Really delete #{track.title}?" }, class: "btn btn-danger btn-mini" %></td>
+			    	<% if logged_in? && current_user.admin? %>
+				    	<td><%= link_to 'Edit', edit_track_path(track) %></td>
+				    	<td><%= link_to 'Delete', track_path(track), :method => :delete, 
+				    					:data => { confirm: "Really delete #{track.title}?" }, class: "btn btn-danger btn-mini" %></td>
+  					<% else %>
+  						<td></td>
+  						<td></td>
+						<% end %>
 			    </tr>
 			  <% end %>
 			</tbody>

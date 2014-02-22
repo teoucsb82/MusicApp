@@ -1,0 +1,9 @@
+<% @track.notes.each do |note| %>
+	<p>
+		<%= note.description %> - <%= note.user.email %>
+		<% if logged_in? && current_user.id == note.user_id %>
+			<%= link_to 'Delete', note_path(note), :method => :delete, 
+				:data => { confirm: "Really delete this note?" }, class: "btn btn-danger btn-mini" %>
+		<% end %>
+	</p>
+<% end %>

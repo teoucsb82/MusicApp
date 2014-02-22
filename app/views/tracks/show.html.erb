@@ -12,11 +12,35 @@
 	<div class="span7 offset1">
 		<h3><%= @track.title %></h3>
 		<hr>
-		<p>
-			<em>
-				<%= h(@track.lyrics).gsub(/\n/, '<br/>').html_safe %>
-			</em>
-		</p>
+		<div class="row">
+			<div class="span2"><strong>Lyrics</strong></div>
+			<div class="span4"><em>&#9835; <%= h(@track.lyrics).gsub(/\n/, '<br/>&#9835; ').html_safe %></em></div>
+		</div>
+		
+		<hr>
+
+		<div class="row">
+			<div class="span2"><strong>Track Notes</strong></div>
+			<div class="span4">
+					<%= render 'notes/note' %>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="span2"><strong>Add Note</strong></div>
+			<% if logged_in? %>
+				<div class="span4">
+						<%= render 'notes/form', :note => @note, :action => :new %>
+				</div>
+			<% else %>
+					<div class="span4">
+						Oops, you need to be <%= link_to "signed in", new_session_url %> to add a comment!
+				</div>
+			<% end %>
+		</div>
+	
 	</div>
 </div>
 

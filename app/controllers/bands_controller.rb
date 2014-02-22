@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-
+	
 	def create
 		@band = Band.new(band_params)
 		@band.name = @band.name.split(" ").map(&:capitalize).join(" ")

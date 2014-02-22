@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   has_many	:notes,
   					:class_name => "Note",
   					:foreign_key => :user_id,
-  					:primary_key => :id
+  					:primary_key => :id,
+  					:dependent => :destroy
   					
 	def self.find_by_credentials(params)
 		user = User.find_by_email(params[:email])

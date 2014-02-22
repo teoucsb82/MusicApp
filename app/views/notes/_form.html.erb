@@ -1,0 +1,14 @@
+<% action_url = action == :new ? track_notes_url(@track.id) : note_url(@note) %>
+<% form_method = action == :new ? "POST" : "PATCH" %>
+<% button_text = action == :new ? "Add Note" : "Update Note" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type ="hidden" name="_method" value="<%= form_method %>">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="description">Description: </label>
+	<textarea name="note[description]" id="description" class="span5"><%= @note.description unless @note.nil? %></textarea>
+	<br>
+	<input type="submit" value="<%= button_text %>">
+
+</form>
