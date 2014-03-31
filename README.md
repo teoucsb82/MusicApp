@@ -1,3 +1,3 @@
-# MusicApp
+# [MusicApp](http://fast-badlands-5777.herokuapp.com/)
 
-Written by Teo Dell'Amico for App Academy Week 4 Day 5 project. Goin fancy on this one
+Rails site w/ nested forms for tracking bands/albums/tracks. Includes basic authorization as well.
